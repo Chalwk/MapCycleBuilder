@@ -2,6 +2,8 @@
 
 A JavaFX application for generating `mapcycle.txt` and `mapvotes.txt` files for game servers.
 
+![Build Status](https://github.com/Chalwk/MapCycleBuilder/actions/workflows/build.yml/badge.svg)
+
 ## Features
 
 - Drag and drop interface for managing map rotation
