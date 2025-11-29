@@ -1,21 +1,17 @@
 /.idea/
 /build/
 
-# Build outputs
 out/
 bin/
 *.jar
 *.exe
 
-# Gradle - only exclude the cache, not the wrapper
 .gradle/
 !gradle/wrapper/gradle-wrapper.jar
 
-# IDE
 *.iml
 *.ipr
 *.iws
 
-# OS
 .DS_Store
 Thumbs.db
