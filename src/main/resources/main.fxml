@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.chalwk.MainController" spacing="10" style="-fx-padding: 15;">
+    <MenuBar>
+        <Menu text="File">
+            <MenuItem text="Exit" onAction="#handleExit"/>
+        </Menu>
+        <Menu text="Help">
+            <MenuItem text="About"/>
+        </Menu>
+    </MenuBar>
+
+    <Label text="Map Cycle Builder" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <!-- Directory Settings -->
+    <VBox spacing="5"
+          style="-fx-border-color: #bdc3c7; -fx-border-width: 1; -fx-padding: 10; -fx-background-color: #ecf0f1;">
+        <Label text="Directory Settings" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+        <HBox spacing="10">
+            <VBox spacing="5">
+                <Label text="Maps Directory:"/>
+                <HBox spacing="5">
+                    <TextField fx:id="mapsDirectoryField" promptText="Path to maps folder" prefWidth="300"/>
+                    <Button text="Browse" onAction="#browseMapsDirectory"/>
+                </HBox>
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Gametypes Directory:"/>
+                <HBox spacing="5">
+                    <TextField fx:id="gametypesDirectoryField" promptText="Path to gametypes folder" prefWidth="300"/>
+                    <Button text="Browse" onAction="#browseGametypesDirectory"/>
+                </HBox>
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Server Directory:"/>
+                <HBox spacing="5">
+                    <TextField fx:id="serverDirectoryField" promptText="Path to server folder" prefWidth="300"/>
+                    <Button text="Browse" onAction="#browseServerDirectory"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Main Content Area -->
+    <HBox spacing="15" VBox.vgrow="ALWAYS">
+        <!-- Available Maps and Gametypes -->
+        <VBox spacing="10" prefWidth="300">
+            <Label text="Available Maps" style="-fx-font-weight: bold;"/>
+            <ListView fx:id="availableMapsList" VBox.vgrow="ALWAYS"/>
+
+            <Label text="Available Gametypes" style="-fx-font-weight: bold;"/>
+            <ListView fx:id="availableGametypesList" VBox.vgrow="ALWAYS" prefHeight="200"/>
+        </VBox>
+
+        <!-- Controls and Rotation List -->
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Map Rotation" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Validate Settings" onAction="#validateSettings"
+                        style="-fx-background-color: #f39c12; -fx-text-fill: white;"/>
+                <Button text="Generate Files" onAction="#generateFiles"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+            </HBox>
+
+            <ListView fx:id="rotationList" VBox.vgrow="ALWAYS"/>
+
+            <!-- Entry Controls -->
+            <VBox spacing="5" style="-fx-border-color: #bdc3c7; -fx-border-width: 1; -fx-padding: 10;">
+                <Label text="Add/Edit Rotation Entry" style="-fx-font-weight: bold;"/>
+                <HBox spacing="10">
+                    <VBox spacing="5">
+                        <Label text="Description:"/>
+                        <TextField fx:id="descriptionField" promptText="Custom description" prefWidth="200"/>
+                    </VBox>
+                    <VBox spacing="5">
+                        <Label text="Min Players:"/>
+                        <Spinner fx:id="minPlayersSpinner" prefWidth="80"/>
+                    </VBox>
+                    <VBox spacing="5">
+                        <Label text="Max Players:"/>
+                        <Spinner fx:id="maxPlayersSpinner" prefWidth="80"/>
+                    </VBox>
+                    <VBox spacing="5">
+                        <Label text="Actions:"/>
+                        <HBox spacing="5">
+                            <Button text="Add to Rotation" onAction="#addToRotation"
+                                    style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                            <Button text="Remove Selected" onAction="#removeFromRotation"
+                                    style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+                        </HBox>
+                    </VBox>
+                </HBox>
+                <HBox spacing="5">
+                    <Button text="Move Up" onAction="#moveUp"/>
+                    <Button text="Move Down" onAction="#moveDown"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </HBox>
+
+    <!-- Status Bar -->
+    <HBox spacing="10" style="-fx-border-color: #bdc3c7; -fx-border-width: 1 0 0 0; -fx-padding: 5 0 0 0;">
+        <Label text="Status:" style="-fx-font-weight: bold;"/>
+        <Label fx:id="statusLabel" text="Ready"/>
+    </HBox>
+</VBox>
